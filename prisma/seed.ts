@@ -3,26 +3,43 @@ import { adapter } from "@/shared/lib/db";
 
 const prisma = new PrismaClient({ adapter });
 async function main() {
+  const user = await prisma.user.create({
+    data: {
+      login: 'user',
+      passwordHash: 'safasf',
+      rating: 1000
+    }
+  })
+  const user2 = await prisma.user.create({
+    data: {
+      login: 'user2',
+      passwordHash: 'safasf',
+      rating: 800
+    }
+  })
   await prisma.game.create({
     data: {
-      name: "game-1",
+      status: 'idle',
+      field: Array(9).fill(null),
+      players: {
+        connect: {
+          id: user.id
+        }
+      }
     },
   });
-  await prisma.game.create({
+  await prisma.game.create({ 
     data: {
-      name: "game-2",
+      status: 'idle',
+      field: Array(9).fill(null),
+      players: {
+        connect: {
+          id: user2.id
+        }
+      }
     },
   });
-  await prisma.game.create({
-    data: {
-      name: "game-3",
-    },
-  });
-  await prisma.game.create({
-    data: {
-      name: "game-4",
-    },
-  });
+  
 }
 main()
   .then(async () => {
