@@ -50,7 +50,7 @@ function Button({
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
-    error: Either<string, unknown>;
+    error?: Either<string, unknown>;
   }) {
   const Comp = asChild ? Slot : "button";
 
