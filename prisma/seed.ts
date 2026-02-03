@@ -17,28 +17,28 @@ async function main() {
       rating: 800
     }
   })
-  await prisma.game.create({
-    data: {
-      status: 'idle',
-      field: Array(9).fill(null),
-      players: {
-        connect: {
-          id: user.id
-        }
-      }
-    },
-  });
-  await prisma.game.create({ 
-    data: {
-      status: 'idle',
-      field: Array(9).fill(null),
-      players: {
-        connect: {
-          id: user2.id
-        }
-      }
-    },
-  });
+  // await prisma.game.create({
+  //   data: {
+  //     status: 'idle',
+  //     field: Array(9).fill(null),
+  //     players: {
+  //       connect: {
+  //         id: user.id
+  //       }
+  //     }
+  //   },
+  // });
+  // await prisma.game.create({ 
+  //   data: {
+  //     status: 'idle',
+  //     field: Array(9).fill(null),
+  //     players: {
+  //       connect: {
+  //         id: user2.id
+  //       }
+  //     }
+  //   },
+  // });
   
 }
 main()

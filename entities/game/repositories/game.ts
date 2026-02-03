@@ -18,6 +18,26 @@ async function gamesList(where: Prisma.GameWhereInput): Promise<GameEntity[]> {
 
 const fieldSchema = z.array(z.union([z.string(), z.null()]));
 
+
+async function createGame(game: GameIdleEntity): Promise<GameEntity> {
+   const createdGame = await prisma.game.create({
+    data: {
+      status: game.status,
+      id: game.id,
+      field: Array(9).fill(null),
+      players: {
+        connect: {id: game.creator.id}
+      },
+    },
+    include: {
+      players: true,
+      winner: true
+    }
+   })
+
+   return dbGameToGameEntity(createdGame)
+}
+
 function dbGameToGameEntity(
   game: Game & { players: User[]; winner?: User | null },
 ): GameEntity {
@@ -60,4 +80,5 @@ function dbGameToGameEntity(
 
 export const gameRepository = {
   gamesList,
+  createGame
 };
