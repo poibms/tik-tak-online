@@ -1,4 +1,4 @@
-import { useActionState as useActionStateReact } from "react"
+import { useActionState as useActionStateReact } from "react";
 
 export function useActionState<State, InitialState>(
   action: (state: Awaited<State>) => State | Promise<State>,
@@ -11,7 +11,7 @@ export function useActionState<State, InitialState>(
 ];
 export function useActionState<State, InitialState, Payload>(
   action: (state: Awaited<State>, payload: Payload) => State | Promise<State>,
-  initialState: Awaited<State>,
+  initialState: InitialState,
   permalink?: string,
 ): [
   state: Awaited<State> | InitialState,
@@ -19,6 +19,12 @@ export function useActionState<State, InitialState, Payload>(
   isPending: boolean,
 ];
 
-export function useActionState(action: any, initialState: any, permalink?: string) {
-  return useActionStateReact(action, initialState, permalink)
+export function useActionState(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  action: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  initialState: any,
+  premalink?: string,
+) {
+  return useActionStateReact(action, initialState, premalink);
 }
