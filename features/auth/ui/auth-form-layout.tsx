@@ -1,14 +1,13 @@
-import { Alert, AlertDescription } from "@/shared/ui/alert"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/ui/card"
 
-export function AuthFormLayout({actions, description, fields, link, title, onSubmit, error}: {
+export function AuthFormLayout({actions, description, fields, link, title, action, error}: {
   title: string,
   description: string,
   fields: React.ReactNode
   actions: React.ReactNode
   link: React.ReactNode
-  onSubmit: React.SubmitEventHandler<HTMLFormElement>
   error: React.ReactNode
+  action: (formData: FormData) => void
 }) {
   return (
     <Card className='w-full max-w-md'>
@@ -21,7 +20,7 @@ export function AuthFormLayout({actions, description, fields, link, title, onSub
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form action={action} className="space-y-4">
           {fields}
           {error}
           {actions}
