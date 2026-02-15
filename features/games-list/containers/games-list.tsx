@@ -12,7 +12,7 @@ export async function GamesList() {
     >
       {games.map((game) => {
         return (
-          <GameCard key={game.id} login={game.id} rating={game.creator.rating}/>
+          <GameCard key={game.id} login={game.creator.login} rating={game.creator.rating}/>
         );
       })}
     </Layout>

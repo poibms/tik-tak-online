@@ -22,7 +22,7 @@ export function SignUpForm() {
       link={
         <BottomLink
           text="Already have an account?"
-          linkText="Sign in"
+          linkText="Sign in"  
           url="/sign-in"
         />
       }
