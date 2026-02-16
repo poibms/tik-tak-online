@@ -1,8 +1,15 @@
-import React from 'react'
+import { Game } from "@/features/game/server";
+import React from "react";
 
-export default async function Page({params}: {params: Promise<{id: string}>}) {
-  const {id} = await params
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   return (
-    <div>game {id}</div>
-  )
+    <main className="flex flex-col grow pt-24 w-full max-w-[400px]">
+      <Game gameId={id}/>
+    </main>
+  );
 }
