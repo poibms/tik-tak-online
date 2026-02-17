@@ -19,6 +19,7 @@ export const createGame = async (player: PlayerEntity) => {
   const createdGame = await gameRepository.createGame({
     id: cuid(),
     creator: player,
+    field: Array(9).fill(null),
     status: "idle",
   });
 
