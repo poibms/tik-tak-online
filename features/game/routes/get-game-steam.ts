@@ -21,7 +21,7 @@ export async function getGameStream(
   write(game);
 
   addCloseListener(
-    gameEvents.addListener(game.id, (event) => {
+    await gameEvents.addListener(game.id, (event) => {
       write(event.data);
     }),
   );
