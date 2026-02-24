@@ -7,18 +7,18 @@ export function GameStatus({ game }: { game: GameDomain.GameEntity }) {
         <div>Waiting for user...</div>
       );
     case "inProgress": {
-      const currSymbol = GameDomain.getGameCurrentStep(game)
+      const currSymbol = GameDomain.getCurrentSymbol(game)
       return (
         <div>Turn: {currSymbol}</div>
       );
     }
     case "gameOver": {
-      const currSymbol = GameDomain.getGameCurrentStep(game)
+      const currSymbol = GameDomain.getCurrentSymbol(game)
       return ( 
         <div>Winner: {currSymbol}</div>
       );
     }
-    case "gameOverDraw":
+    case "gameOverDraw": 
       return (
         <div>Draw</div>
       );
